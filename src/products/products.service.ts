@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { WritableStreamDefaultController } from 'node:stream/web';
 import { CreateProductDto } from './dto/create-product.dto'
 import { StoresService } from 'src/stores/stores.service';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 @Injectable()
 export class ProductsService {
@@ -39,7 +40,7 @@ export class ProductsService {
     return this.productRepository.save({ ...data, store })
   }
 
-  async update(id: number, data: any) {
+  async update(id: number, data: UpdateProductDto) {
     const product = await this.productRepository.findOneBy({
       id
     })

@@ -13,6 +13,16 @@ export declare class ProductsController {
         image: string;
         storeId: number;
     } & import("./entities/product.entity").Product>;
-    update(id: number, body: UpdateProductDto): Promise<any>;
+    update(id: number, body: UpdateProductDto): Promise<{
+        name: string;
+        price: number;
+        image: string;
+        id: number;
+        created_at: Date;
+        updated_at: Date;
+        deleted_at: Date;
+        store: import("../stores/entities/store.entity").Store;
+        purchases: import("../purchases/entities/purchase.entity").Purchase[];
+    } & import("./entities/product.entity").Product>;
     delete(id: number): Promise<import("typeorm").UpdateResult>;
 }
