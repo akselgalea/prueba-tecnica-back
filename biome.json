@@ -1,0 +1,18 @@
+{
+	"javascript": {
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	},
+
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noExplicitAny": "off"
+			},
+			"style": {
+				"useImportType": "off"
+			}
+		}
+	}
+}
