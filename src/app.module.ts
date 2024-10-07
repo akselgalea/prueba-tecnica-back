@@ -7,6 +7,9 @@ import { AuthModule } from "./auth/auth.module";
 import { RolesGuard } from "./roles/roles.guard";
 import { UsersModule } from "./users/users.module";
 import { AuthGuard } from "./auth/auth.guard";
+import { ProductsModule } from "./products/products.module";
+import { StoresModule } from "./stores/stores.module";
+import { PurchasesModule } from "./purchases/purchases.module";
 
 @Module({
 	imports: [
@@ -25,6 +28,9 @@ import { AuthGuard } from "./auth/auth.guard";
 			migrations: [],
 		}),
 		AuthModule,
+		ProductsModule,
+		StoresModule,
+		PurchasesModule,
 	],
 	controllers: [AppController],
 	providers: [

@@ -18,7 +18,6 @@ export class AuthController {
 	@Public()
 	@Post("register")
 	register(@Body() body: RegisterDto) {
-		console.log(body);
 		return this.authService.register(body);
 	}
 }

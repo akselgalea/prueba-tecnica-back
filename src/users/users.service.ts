@@ -7,10 +7,10 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import { encryptPassword } from "src/auth/auth.utils";
 import { RolesEnum } from "src/enums/roles.enum";
-import { Role } from "src/roles/role.entity";
+import { Role } from "src/roles/entities/role.entity";
 import { In, Repository } from "typeorm";
 import type { CreateUserDto } from "./dto/create-user.dto";
-import { User } from "./user.entity";
+import { User } from "./entities/user.entity";
 import { UpdateUserDto } from "./dto/update-user.dto";
 
 @Injectable()
@@ -42,6 +42,9 @@ export class UsersService {
 	getByEmailOrUsername(input: string): Promise<User> {
 		return this.userRepository.findOne({
 			where: [{ email: input }, { username: input }],
+			relations: {
+				roles: true,
+			},
 		});
 	}
 

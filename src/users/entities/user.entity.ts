@@ -1,4 +1,5 @@
-import { Role } from "src/roles/role.entity";
+import { Purchase } from "src/purchases/entities/purchase.entity";
+import { Role } from "src/roles/entities/role.entity";
 import {
 	Entity,
 	Column,
@@ -8,6 +9,7 @@ import {
 	DeleteDateColumn,
 	ManyToMany,
 	JoinTable,
+	ManyToOne,
 } from "typeorm";
 
 @Entity()
@@ -42,6 +44,12 @@ export class User {
 
 	@DeleteDateColumn({ nullable: true })
 	deleted_at: Date;
+
+	@ManyToOne(
+		() => Purchase,
+		(purchase) => purchase.user,
+	)
+	purchases: Purchase[];
 
 	@ManyToMany(() => Role)
 	@JoinTable()

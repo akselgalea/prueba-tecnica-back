@@ -6,7 +6,7 @@ import {
 import { Reflector } from "@nestjs/core";
 import type { RolesEnum } from "src/enums/roles.enum";
 import { ROLES_KEY } from "./roles.decorator";
-import type { Role } from "./role.entity";
+import type { Role } from "./entities/role.entity";
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -23,6 +23,8 @@ export class RolesGuard implements CanActivate {
 		}
 
 		const { user } = context.switchToHttp().getRequest();
+
+		console.log(user);
 
 		return roles.some((role) => user.roles?.some((r: Role) => r.name === role));
 	}
